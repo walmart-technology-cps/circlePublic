@@ -34,7 +34,7 @@ public class RestCallTest {
 
             Runtime.exec("git remote add upstream git@github.com:walmart-technology-cps/circlePublic.git");
             Runtime.exec("git add .");
-            Runtime.exec("git commit -m \"hi\"");
+            Runtime.exec("git commit -m hi");
             Runtime.exec("git push upstream");
 
 
