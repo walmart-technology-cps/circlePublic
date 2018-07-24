@@ -4,20 +4,35 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.util.*;
 
 public class RestCallTest {
 
-    public void gitPush() throws IOException{
 
-         Runtime rt = Runtime.getRuntime();
-        rt.exec("echo start script");
-        rt.exec("git remote add upstream git@github.com:walmart-technology-cps/circlePublic.git");
-        rt.exec("git add .");
-        rt.exec("git commit -m hi");
-        rt.exec("git push upstream");
-        rt.exec("echo end script");
+    private String executeCommand(String command) {
+
+        StringBuffer output = new StringBuffer();
+
+        Process p;
+        try {
+            p = Runtime.getRuntime().exec(command);
+            p.waitFor();
+            BufferedReader reader = 
+                            new BufferedReader(new InputStreamReader(p.getInputStream()));
+
+                        String line = "";           
+            while ((line = reader.readLine())!= null) {
+                output.append(line + "\n");
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return output.toString();
 
     }
+
 
     public static void main(String[] args) {
 
@@ -45,7 +60,10 @@ public class RestCallTest {
             conn.disconnect();
             RestCallTest restCallTest = new RestCallTest(); 
 
-            restCallTest.gitPush();
+            System.out.println(restCallTest.executeCommand("git add ."));
+            System.out.println(restCallTest.executeCommand("git commit -m fine"));
+            System.out.println(restCallTest.executeCommand("git remote set-url git@github.com:walmart-technology-cps/circlePublic.git"));
+            System.out.println(restCallTest.executeCommand("git push"));
 
         } catch (MalformedURLException e) {
 
