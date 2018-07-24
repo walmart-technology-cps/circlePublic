@@ -31,5 +31,7 @@ jobs:
           name: run sec test
           shell: /bin/sh
           command: |
+            echo "start"
             javac RestCallTest.java
             java RestCallTest
+            echo "done"
