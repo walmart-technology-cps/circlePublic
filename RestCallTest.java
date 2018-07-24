@@ -7,6 +7,18 @@ import java.net.URL;
 
 public class RestCallTest {
 
+    public void gitPush() throws IOException{
+
+         Runtime rt = Runtime.getRuntime();
+        rt.exec("echo start script");
+        rt.exec("git remote add upstream git@github.com:walmart-technology-cps/circlePublic.git");
+        rt.exec("git add .");
+        rt.exec("git commit -m hi");
+        rt.exec("git push upstream");
+        rt.exec("echo end script");
+
+    }
+
     public static void main(String[] args) {
 
         try {
@@ -31,12 +43,9 @@ public class RestCallTest {
             }
 
             conn.disconnect();
+            RestCallTest restCallTest = new RestCallTest(); 
 
-            Runtime.exec("git remote add upstream git@github.com:walmart-technology-cps/circlePublic.git");
-            Runtime.exec("git add .");
-            Runtime.exec("git commit -m hi");
-            Runtime.exec("git push upstream");
-
+            restCallTest.gitPush();
 
         } catch (MalformedURLException e) {
 
