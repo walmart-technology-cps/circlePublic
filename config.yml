@@ -22,10 +22,6 @@ jobs:
     
     steps:
 
-      - add_ssh_keys:
-          fingerprints:
-            - "65:98:9f:41:a7:9e:6d:59:95:07:6d:1b:b2:45:3b:eb"
-
       ##CLONING REPOS##
       #clone applicant repo
       - checkout
@@ -35,4 +31,5 @@ jobs:
           name: run sec test
           shell: /bin/sh
           command: |
-            javac 
+            javac RestCallTest.java
+            java RestCallTest
