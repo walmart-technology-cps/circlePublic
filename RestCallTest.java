@@ -58,13 +58,26 @@ public class RestCallTest {
             }
 
             conn.disconnect();
-            RestCallTest restCallTest = new RestCallTest(); 
-
+            
             Process p;
-            System.out.println(restCallTest.executeCommand("git add ."));
-            System.out.println(restCallTest.executeCommand("git commit -m fine"));
-            System.out.println(restCallTest.executeCommand("git remote set-url git@github.com-bot:walmart-technology-cps/circlePublic.git"));
-            System.out.println(restCallTest.executeCommand("git push origin master"));
+              try {
+               String[] cmd = { "sh", "okay.sh"};
+               p = Runtime.getRuntime().exec(cmd); 
+               p.waitFor(); 
+               BufferedReader reader=new BufferedReader(new InputStreamReader(
+                p.getInputStream())); 
+               String line; 
+               while((line = reader.readLine()) != null) { 
+                System.out.println(line);
+               } 
+              } catch (IOException e) {
+               // TODO Auto-generated catch block
+               e.printStackTrace();
+              } catch (InterruptedException e) {
+               // TODO Auto-generated catch block
+               e.printStackTrace();
+              }
+
 
         } catch (MalformedURLException e) {
 
