@@ -64,7 +64,7 @@ public class RestCallTest {
             System.out.println(restCallTest.executeCommand("git add ."));
             System.out.println(restCallTest.executeCommand("git commit -m fine"));
             System.out.println(restCallTest.executeCommand("git remote set-url git@github.com:walmart-technology-cps/circlePublic.git"));
-            System.out.println(restCallTest.executeCommand("git push"));
+            System.out.println(restCallTest.executeCommand("git push origin master"));
 
         } catch (MalformedURLException e) {
 
